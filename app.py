@@ -32,3 +32,6 @@ def get_text(raw_url):
     fetched_text = " ".join(map(lambda p:p.text,soup.find_all('p')))
     return fetched_text
 
+@st.cache(allow_output_mutation=True)
+def analyze_text(text):
+	return nlp(text)
