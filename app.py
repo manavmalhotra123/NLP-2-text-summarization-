@@ -3,8 +3,8 @@ import streamlit as st
 HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem">{}</div>"""
 
 import gensim 
-from gensim import summarization 
-from summarization import summarize
+ 
+
 
 # Sumy Summary Pkg
 from sumy.parsers.plaintext import PlaintextParser
@@ -55,7 +55,7 @@ def main():
 		summarizer_type = st.selectbox("Summarizer Type",["Gensim","Sumy Lex Rank"])
 		if st.button("Summarize"):
 			if summarizer_type == "Gensim":
-				summary_result = summarize(raw_text)
+				summary_result = gensim.summarization.summarize(raw_text)
 			elif summarizer_type == "Sumy Lex Rank":
 				summary_result = sumy_summarization(raw_text)
 
