@@ -1,5 +1,7 @@
 import streamlit as st 
 
+HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem">{}</div>"""
+
 from gensim.summarization import summarize
 
 # Sumy Summary Pkg
@@ -53,7 +55,7 @@ def main():
 			if summarizer_type == "Gensim":
 				summary_result = summarize(raw_text)
 			elif summarizer_type == "Sumy Lex Rank":
-				summary_result = sumy_summarizer(raw_text)
+				summary_result = sumy_summarization(raw_text)
 
 			st.write(summary_result)
 
@@ -79,7 +81,7 @@ def main():
 				st.success("Length of Full Text::{}".format(len_of_full_text))
 				st.success("Length of Short Text::{}".format(len_of_short_text))
 				st.info(result[:len_of_short_text])
-				summarized_docx = sumy_summarizer(result)
+				summarized_docx = sumy_summarization(result)
 				docx = analyze_text(summarized_docx)
 				html = displacy.render(docx,style="ent")
 				html = html.replace("\n\n","\n")
