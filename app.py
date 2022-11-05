@@ -1,30 +1,27 @@
-# importing host library
-import streamlit as manav
+import streamlit as st 
 
-# summary package for project
+from gensim.summarization import summarize
 
+# Sumy Summary Pkg
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lex_rank import LexRankSummarizer
 
+import spacy
+from spacy import displacy
+nlp = spacy.load('en')
 
-# web scrapping packages for the project 
+# Web Scraping Pkg
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
+# function for summarisation 
+def sumy_summarization(docx):
+    parser = PlaintextParser.from_string(docx,Tokenizer("english"))
+    lex_summarizer = LexRankSummarizer()
+    summary = lex_summarizer(parser.document,3)
+    summary_list = [str(sentence) for sentence in summary]
+    result = ' '.join(summary_list)
+    return result
 
-
-
-def  main():
-    # summary and entity checker
-
-    manav.title("Summarizer and Entity Checker")
-    activities = ["Summarize", "Entity Checker","NER for URL"]
-    choice = manav.selectbox("Select Activity",activities)
-    
-    if choice == "Summarizer":
-        manav.subheader("Summary")
-        raw_text = manav.textbox("Enter the paragraph here...")
-        if manav.button('Summarize'):
-            manav.write(raw_text)
-    
-
-
-
-if __name__ == "__main__":
-    main()
+# 
