@@ -24,4 +24,11 @@ def sumy_summarization(docx):
     result = ' '.join(summary_list)
     return result
 
-# 
+# Fetching the text from the url
+@st.cache
+def get_text(raw_url):
+    page = urlopen( raw_url )
+    soup = BeautifulSoup(page)
+    fetched_text = " ".join(map(lambda p:p.text,soup.find_all('p')))
+    return fetched_text
+
