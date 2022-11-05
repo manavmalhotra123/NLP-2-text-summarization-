@@ -2,7 +2,9 @@ import streamlit as st
 
 HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem">{}</div>"""
 
-from gensim.summarization import summarize
+import gensim 
+from gensim import summarization 
+from summarization import summarize
 
 # Sumy Summary Pkg
 from sumy.parsers.plaintext import PlaintextParser
