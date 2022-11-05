@@ -12,6 +12,10 @@ def  main():
     # summary and entity checker
 
     manav.title("Summarizer and Entity Checker")
+    activities = ["Summarizer", "Entity Checker","NER for URL"]
+    choice = manav.selectbox("Select Activity")
+    
+
 
 
 if __name__ == "__main__":
