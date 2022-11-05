@@ -13,8 +13,9 @@ def  main():
 
     manav.title("Summarizer and Entity Checker")
     activities = ["Summarizer", "Entity Checker","NER for URL"]
-    choice = manav.selectbox("Select Activity")
+    choice = manav.selectbox("Select Activity",activities)
     
+
 
 
 
